@@ -1,8 +1,8 @@
-# lojas_amazonas
+## lojas_amazonas
 Projeto Lógica de Programação Serratec (Grupo4 )
-
-#Usuario // Senha
-chevrand ==> 123
-sara ==> #7440
-patrick ==> 123
-materia ==> 2027
+================================================
+##Usuario // Senha
+<p>chevrand ==> 123</p>
+<p>sara ==> #7440</p>
+<p>patrick ==> 123</p>
+<p>materia ==> 2027</p>
