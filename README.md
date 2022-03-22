@@ -1,6 +1,4 @@
-## lojas_amazonas
-Projeto Lógica de Programação Serratec (Grupo4 )
-<<<<<<< HEAD
+##Projeto Lógica de Programação Serratec (Grupo4 )
 ================================================
 ##Usuario // Senha
 <p>chevrand ==> 123</p>
