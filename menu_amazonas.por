@@ -14,14 +14,14 @@ programa
 		//Menu principal do sistema.
 		escreva("USUÁRIO: ", usuario, "\n")//Exibe o usuário que está logado no sistema.
 		escreva("+------------------------------------------------------------+\n")
-		escreva("|\t\t\t\tMenu de Opções\t\t\t  |\n")
+		escreva("|\t\t\tMenu de Opções\t\t\t     |\n")
 		escreva("+------------------------------------------------------------+\n\n")
-		escreva("# Selecione uma categoria:\n\n")
-		escreva("  ", "ALIMENTOS", "\t\t[1]\n")
-		escreva("  ", "ELETRÔNICOS", "\t\t[2]\n")
-		escreva("  ", "VESTUÁRIO", "\t\t[3]\n\n")
-		escreva("=============================================================\n")
-		escreva("Finalizar Compra  [4]", "\t\t\t\t     Logoff [5]\n\n")
+		escreva("Selecione uma categoria:\n\n")
+		escreva("=>  ", "Alimentos", "\t\t[1]\n")
+		escreva("=>  ", "Eletrônicos", "\t\t[2]\n")
+		escreva("=>  ", "Vestuário", "\t\t[3]\n\n")
+		escreva("==============================================================\n")
+		escreva("Finalizar Compra  [4]", "\t\t\t\t    Logoff [5]\n\n")
 		leia(opcao_menu)//Coleta a opção selecionada no menu pelo usuário.
 
 		//Direciona o usuário até a opção selecionada.
@@ -71,7 +71,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1605; 
+ * @POSICAO-CURSOR = 485; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
