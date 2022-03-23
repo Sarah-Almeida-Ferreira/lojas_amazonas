@@ -13,22 +13,27 @@ programa
 	{
 		//Menu principal do sistema.
 		escreva("USUÁRIO: ", usuario, "\n")//Exibe o usuário que está logado no sistema.
-		escreva("+------------------------------------------------------------+\n")
-		escreva("|\t\t\tMenu de Opções\t\t\t     |\n")
-		escreva("+------------------------------------------------------------+\n\n")
-		escreva("Selecione uma categoria:\n\n")
-		escreva("=>  ", "Alimentos", "\t\t[1]\n")
-		escreva("=>  ", "Eletrônicos", "\t\t[2]\n")
-		escreva("=>  ", "Vestuário", "\t\t[3]\n\n")
-		escreva("==============================================================\n")
-		escreva("Finalizar Compra  [4]", "\t\t\t\t    Logoff [5]\n\n")
+		escreva("+--------------------------------------------------------------+\n")
+		escreva("|\t\t\tMenu de Opções\t\t\t       |\n")
+		escreva("+--------------------------------------------------------------+\n\n")
+		escreva("\t\t   Selecione uma categoria:\n\n")
+		escreva("░░░░░░░░░░░░░░░\t\t", "░░░░░░░░░░░░░░░\t\t", "░░░░░░░░░░░░░░░\n")
+		escreva("░░░█▀█▀█░░░░░░░\t\t", "░░░█▀▀▀▀▀▀▀█░░░\t\t", "░░████░░░████░░\n")
+		escreva("░░░█▄█▄▀▄░░░░░░\t\t", "░░░█░█████░█░░░\t\t", "░░█░░░███░░░█░░\n")
+		escreva("░░░█▄█▄█▄█░░░░░\t\t", "░░░█░█████░█░░░\t\t", "░░███░░░░░███░░\n")
+		escreva("░░█████████░░░░\t\t", "░░░█░█████░█░░░\t\t", "░░░░█░░░░░█░░░░\n")
+		escreva("░░█████████░░░░\t\t", "░░░█░░▄▄▄░░█░░░\t\t", "░░░░███████░░░░\n")
+		escreva("░░█████████░░░░\t\t", "░░░█▄▄▄▄▄▄▄█░░░\t\t", "░░░░░░░░░░░░░░░\n")
+		escreva("     ", "Doces", "[1]\t\t ", "Eletrônicos", "[2]\t\t  ", "Vestuário", "[3]\n\n")
+		escreva("===============================================================\n")
+		escreva("Finalizar Compra  [4]", "\t\t\t\t     Logoff [5]\n\n")
 		leia(opcao_menu)//Coleta a opção selecionada no menu pelo usuário.
 
 		//Direciona o usuário até a opção selecionada.
 		escolha(opcao_menu){
 			caso 1:
 				limpa()
-				escreva("Insira a funcão 'categoria_alimentos' aqui")
+				escreva("Insira a funcão 'categoria_doces' aqui")
 			pare
 			caso 2:
 				limpa()
@@ -71,7 +76,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 485; 
+ * @POSICAO-CURSOR = 1155; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
