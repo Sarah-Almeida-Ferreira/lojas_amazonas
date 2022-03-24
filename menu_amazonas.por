@@ -2,7 +2,7 @@ programa
 {
 	inclua biblioteca Util
 	
-	cadeia usuario = "admin"
+	cadeia usuario = "wanderson"
 	inteiro opcao_menu, opcao_logoff
 	
 	funcao inicio()
@@ -59,14 +59,22 @@ programa
 				escreva("Digite [1] para SIM ou [2] para NÃO: ")
 				leia(opcao_logoff)
 
-				se(opcao_logoff == 1){
-					limpa()
-					escreva("Insira a funcão 'login' aqui")
-				}
-				se(opcao_logoff == 2){
-					limpa()
-					menu()
-				}
+				escolha(opcao_logoff){
+					caso 1:
+						limpa()
+						escreva("Insira a funcão 'login' aqui")
+					pare
+					caso 2:
+						limpa()
+						menu()
+					pare
+					caso contrario:
+						limpa()
+						escreva("Opção inválida, tente novamente!")
+						Util.aguarde(2000)
+						limpa()
+						menu()
+				}				
 			pare
 			caso contrario:
 					limpa()
@@ -128,15 +136,23 @@ programa
 				escreva("Deseja realmente retornar à tela de Login?\n\n")
 				escreva("Digite [1] para SIM ou [2] para NÃO: ")
 				leia(opcao_logoff)
-
-				se(opcao_logoff == 1){
-					limpa()
-					escreva("Insira a funcão 'login' aqui")
-				}
-				se(opcao_logoff == 2){
-					limpa()
-					menu_adm()
-				}
+				
+				escolha(opcao_logoff){
+					caso 1:
+						limpa()
+						escreva("Insira a funcão 'login' aqui")
+					pare
+					caso 2:
+						limpa()
+						menu_adm()
+					pare
+					caso contrario:
+						limpa()
+						escreva("Opção inválida, tente novamente!")
+						Util.aguarde(2000)
+						limpa()
+						menu_adm()
+				}				
 			pare
 			caso contrario:
 					limpa()
@@ -152,7 +168,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3540; 
+ * @POSICAO-CURSOR = 65; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
