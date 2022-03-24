@@ -1,5 +1,7 @@
+<p align="center">
+<img width="100px" src="https://drive.google.com/file/d/1dCOtD1cziMgrp7_HQS3Nc49F7_DhqvIB/view?usp=sharing"/>
 <h1>Projeto Lógica de Programação Serratec (Grupo4 )</h1>
-<p></p>
+=========================================================
 <p><h3>#Usuario // Senha</h3></p>
 <p>chevrand ==> 123</p>
 <p>sara ==> #7440</p>
