@@ -25,6 +25,8 @@ programa
 				inteiro i
 				inteiro opcao
 				cadeia guloseimas[5] = {"KIT KAT","M&M'S","AMANDITA","TORTUGUITA","KINDER OVO"}
+				cadeia descricaoItensGuloseimas = ".\n============================================\nChocolates pra adoçar a vida!\nContém alguma porcentagem de cacau e leite.\nNão contém regime.\n============================================\n \n"
+				cadeia semEstoqueGuloseimas[2] = {"Ops, o PAC-MAN comeu todo esse produto e não há mais disponíveis, tente uma outra guloseima!", "Ops, opção inválida, tente novamente!"}
 				const real valorGuloseimas = 4.99
 				
 		
@@ -34,7 +36,7 @@ programa
 				
 				para (i=0; i<=4; i++)
 				{	u.aguarde(1000)
-					escreva("\n", guloseimas[i], " - POR APENAS R$: ", valorGuloseimas,"\nEstoque: ", estoqueGuloseimas[i],".\n============================================\nChocolates pra adoçar a vida!\nContém alguma porcentagem de cacau e leite.\nNão contém regime.\n============================================\n \n")
+					escreva("\n", guloseimas[i], " - POR APENAS R$: ", valorGuloseimas,"\nEstoque: ", estoqueGuloseimas[i], descricaoItensGuloseimas)
 		          }
 				
 				escreva("============ GULOSEIMAS & GORDICES =========================\n")
@@ -61,7 +63,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, o PAC-MAN comeu todo esse produto e não há mais disponíveis, tente um M&M!")
+						escreva(semEstoqueGuloseimas[0])
+						escreva("\n")
+						produtosAlimentos()
 					}
 					
 					pare
@@ -83,7 +87,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, o PAC-MAN comeu todo esse produto e não há mais disponíveis, tente uma AMANDITA!")
+						escreva(semEstoqueGuloseimas[0])
+						escreva("\n")
+						produtosAlimentos()
 					}
 					pare	
 					
@@ -104,7 +110,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, o PAC-MAN comeu todo esse produto e não há mais disponíveis, tente uma TORTUGUITA!")
+						escreva(semEstoqueGuloseimas[0])
+						escreva("\n")
+						produtosAlimentos()
 					}
 					pare
 		
@@ -125,7 +133,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, o PAC-MAN comeu todo esse produto e não há mais disponíveis, tente um KINDER OVO!!")
+						escreva(semEstoqueGuloseimas[0])
+						escreva("\n")
+						produtosAlimentos()
 					}
 					pare
 		
@@ -146,7 +156,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, o PAC-MAN comeu todo esse produto e não há mais disponíveis, tente um KIT KAT!")
+						escreva(semEstoqueGuloseimas[0])
+						escreva("\n")
+						produtosAlimentos()
 					}
 					pare
 
@@ -159,7 +171,9 @@ programa
 					pare*/
 					
 					caso contrario:
-					escreva("Opção inválida! Seu time vai pra série B assim.\n")
+					escreva(semEstoqueGuloseimas[1])
+					u.aguarde(1000)
+					escreva("\n")
 					produtosAlimentos()
 				}
 			}
@@ -172,7 +186,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 749; 
+ * @POSICAO-CURSOR = 5101; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

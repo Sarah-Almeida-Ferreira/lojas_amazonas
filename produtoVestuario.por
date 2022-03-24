@@ -25,6 +25,8 @@ programa
 				inteiro i
 				inteiro opcao
 				cadeia camisaTime[5] = {"CAMISETA DO FLAMENGO","CAMISETA DO VASCO","CAMISETA DO BOTAFOGO","CAMISETA DO FLUMINENSE","CAMISETA DO TABAJARA"}
+				cadeia descricaoItensVestuario = ".\n============================================\nCamisa do time do seu coração S2\nTecido 100% poliéster com tratamento DRY.\nVersão quase oficial licenciada.\n============================================\n \n"
+				cadeia semEstoqueVestuario[2] = {"Ops, tivemos um arrastão da torcida do Flamengo e não há mais camisas disponíveis, tente de outro time!", "Ops, opção inválida, seu time vai pra série B assim!"}
 				const real valorCamisaTime = 40.99
 				
 		
@@ -34,7 +36,7 @@ programa
 				
 				para (i=0; i<=4; i++)
 				{	u.aguarde(1000)
-					escreva("\n", camisaTime[i], " - POR APENAS R$: ", valorCamisaTime,"\nEstoque: ", estoqueCamisa[i],".\n============================================\nCamisa do time do seu coração <3\nTecido 100% poliéster com tratamento DRY.\nVersão quase oficial licenciada.\n============================================\n \n")
+					escreva("\n", camisaTime[i], " - POR APENAS R$: ", valorCamisaTime,"\nEstoque: ", estoqueCamisa[i], descricaoItensVestuario)
 		          }
 				
 				escreva("============ CAMISAS DE FUTEBOL ====================\n")
@@ -61,7 +63,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, tivemos um arrastão da torcida do Flamengo e não há mais camisas disponíveis, tente uma do Vasco!")
+						escreva(semEstoqueVestuario[0])
+						escreva("\n")
+						produtosCamisaFutebol()
 					}
 					
 					pare
@@ -83,7 +87,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, tivemos um arrastão da torcida do Vasco e não há mais camisas disponíveis, tente uma do Fogão!")
+						escreva(semEstoqueVestuario[0])
+						escreva("\n")
+						produtosCamisaFutebol()
 					}
 					pare	
 					
@@ -104,7 +110,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, tivemos um arrastão da torcida do Fogão e não há mais camisas disponíveis, tente uma do Fluzão!")
+						escreva(semEstoqueVestuario[0])
+						escreva("\n")
+						produtosCamisaFutebol()
 					}
 					pare
 		
@@ -125,7 +133,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, tivemos um arrastão da torcida do Fluzão e não há mais camisas disponíveis, tente uma do Tabajara!")
+						escreva(semEstoqueVestuario[0])
+						escreva("\n")
+						produtosCamisaFutebol()
 					}
 					pare
 		
@@ -146,7 +156,9 @@ programa
 					}
 					senao
 					{
-						escreva("Ops, tivemos um arrastão da torcida do Tabajara Futebol Clube e não há mais camisas disponíveis, tente uma do Mengão!")
+						escreva(semEstoqueVestuario[0])
+						escreva("\n")
+						produtosCamisaFutebol()
 					}
 					pare
 
@@ -159,7 +171,9 @@ programa
 					pare*/
 					
 					caso contrario:
-					escreva("Opção inválida! Seu time vai pra série B assim.\n")
+					escreva(semEstoqueVestuario[1])
+					u.aguarde(1000)
+					escreva("\n")					
 					produtosCamisaFutebol()
 				}
 			}
@@ -172,7 +186,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5051; 
+ * @POSICAO-CURSOR = 5155; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
