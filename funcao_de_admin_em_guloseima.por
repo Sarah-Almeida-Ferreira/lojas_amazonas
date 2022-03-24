@@ -2,8 +2,10 @@ programa
 {
 	inclua biblioteca Util --> ut
 	inclua biblioteca Sons
-	cadeia guloseimas[10] = {"KIT KAT","M&M'S","AMANDITA","TORTUGUITA","KINDER OVO"," "," "," "," "," "}
+
 	
+	cadeia guloseimas[10] = {"KIT KAT","M&M'S","AMANDITA","TORTUGUITA","KINDER OVO"," "," "," "," "," "}
+	cadeia descguloseimas[10] = {"
 	funcao inicio()
 	{
 		
@@ -14,20 +16,23 @@ programa
 	{
 		caracter opcao
 		cadeia troca, novoproduto
-		inteiro contador,parar = 0
+		inteiro contador,parar = 0,x
 		escreva("\nO que você deseja?\n1 - Alterar os produtos\n2 - Adicionar produtos\n3 - Excluir produtos\n4 - Voltar ao menu inicial")
 		leia (contador)
 			
-
+		
 		escolha (contador)
 		{
 			caso 1:
+			x=0
 			escreva("Qual dos seguintes produtos: ")
 			para(contador = 0;contador<10;contador++)
 			{
 				se(guloseimas[contador] != " ")
 				{
-					escreva("\n ",contador," : ",guloseimas[contador])
+					
+					escreva("\n ",x," : ",guloseimas[contador])
+					x++
 				}
 			}
 			escreva("\n")
@@ -73,13 +78,14 @@ programa
 			}
 			pare
 			caso 3:
-			
+			x = 0
 			escreva("Deseja excluir qual dos seguintes produtos: ")
 			para(contador = 0;contador<10;contador++)
 			{
 				se(guloseimas[contador] != " ")
 				{
-					escreva("\n ",contador," : ",guloseimas[contador])
+					escreva("\n ",x," : ",guloseimas[contador])
+					x++
 				}
 			}
 			escreva("\n")
@@ -91,7 +97,7 @@ programa
 			admin_guloseimas()
 			pare
 			caso contrario:
-			inicio()
+			admin_guloseimas()
 		}
 	
 	}
@@ -101,7 +107,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2101; 
+ * @POSICAO-CURSOR = 202; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
