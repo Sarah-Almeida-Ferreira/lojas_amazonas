@@ -25,10 +25,10 @@
 <p><h3>Menu Principal</h3></p>
 <p># Após o sistema validar o usuário e a senha, você será encaminhado para o menu principal, onde encontrará:</p>
 <p># Categorias dos Produtos (Doces, Eletrônicos e Vestuário)</p>
-<p># Acesso ao Carrinho)</p>
+<p># Acesso ao Carrinho</p>
 <p># Opção de Logoff</p>
-<p># Gerenciamento de Usuários (Somente ADMIN);</p>
-<p># Gerenciamento de Produtos (Somente ADMIN);</p>
+<p># Gerenciamento de Usuários (Somente ADMIN)</p>
+<p># Gerenciamento de Produtos (Somente ADMIN)</p>
 <p></p>
 
 <p><h3>Escolhendo um Produto</h3></p>
