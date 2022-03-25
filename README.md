@@ -7,12 +7,12 @@
 <p><a href="https://github.com/Chevrand">Wanderson Chevrand</a></p>
 <p><a href="https://github.com/Andre-Lucas-093">André Lucas</a></p>
 <p><a href="https://github.com/Patrick-Jabba">Patrick</a></p>
-<p><a href="https://github.com/Patrick-Jabba">Patrick</a></p>
-<p><a href="https://github.com/Patrick-Jabba">Patrick</a></p>
+<p><a href="https://github.com/Patrick-Jabba">Aline Torres</a></p>
+<p><a href="https://github.com/Patrick-Jabba">Pereira</a></p>
 <p></p>
 
-<p><h3>Loggin</p></h3>
-<p>Ao iniciar o código, você será imediatamente questionado se deseja fazer loggin no sistema. Para entrar, basta utilizar qualquer um dos usuários abaixo:</p>
+<p><h3>Login</p></h3>
+<p>Ao iniciar o código, você será imediatamente questionado se deseja fazer login no sistema. Para entrar, basta utilizar qualquer um dos usuários abaixo:</p>
 <p><h4>Usuario // Senha</h3></p>
 <p>chevrand ==> 123</p>
 <p>sara ==> #7440</p>
