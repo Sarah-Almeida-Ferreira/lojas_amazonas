@@ -50,8 +50,8 @@ programa{
 		adicionarUsuario("sarah","#7440")
 		adicionarUsuario("patrick","321")
 		adicionarUsuario("materia","2027")
-		adicionarUsuario("theogit","2005")
-		adicionarUsuario("aline","0301")
+		adicionarUsuario("theogit","0301")
+		adicionarUsuario("aline","2005")
 		adicionarUsuario("cgp","2022")
 		entrar_na_loja()
 	}
@@ -168,7 +168,7 @@ programa{
 		faca{
 			indice++
 			achou=(vetorLogins[indice]==nome)
-		}enquanto((nao achou)e(indice<numeroMaximoUsuarios e indice < 4))
+		}enquanto((nao achou)e(indice<numeroMaximoUsuarios e indice < 9))
 		se(achou){
 			retorne indice
 		}
