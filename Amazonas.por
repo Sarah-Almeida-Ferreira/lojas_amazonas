@@ -238,8 +238,7 @@ programa{
 				escreva("Insira a funcão 'gerenciar_usuarios' aqui")
 				pare
 			caso '6':
-				limpa()
-				escreva("Insira a funcão 'finalizar_compra' aqui")
+				finalizarCompra()
 				pare
 			caso '7':
 				limpa()
@@ -994,7 +993,7 @@ programa{
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3747; 
+ * @POSICAO-CURSOR = 8320; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
