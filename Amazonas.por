@@ -81,7 +81,7 @@ programa{
 		cadeia senha = ""
 		limpa()
 		logo()
-		escreva("\t\t=== LOGIN ===")
+		escreva("\t\t\t=== LOGIN ===")
 		escreva("\n\n Digite seu usuário:\n(ou pressione [ENTER] para sair)\n")
 		leia(usuario)
 		se(usuario==""){
@@ -412,17 +412,17 @@ programa{
      {    limpa()
      
      	u.aguarde(60)
-     	escreva("		░█████╗░███╗░░░███╗░█████╗░███████╗░█████╗░███╗░░██╗░█████╗░░██████╗")
+     	escreva("░█████╗░███╗░░░███╗░█████╗░███████╗░█████╗░███╗░░██╗░█████╗░░██████╗")
 	     u.aguarde(60)
-	     escreva("\n		██╔══██╗████╗░████║██╔══██╗╚════██║██╔══██╗████╗░██║██╔══██╗██╔════╝")
+	     escreva("\n██╔══██╗████╗░████║██╔══██╗╚════██║██╔══██╗████╗░██║██╔══██╗██╔════╝")
 	      u.aguarde(60)
-	     escreva("\n		███████║██╔████╔██║███████║░░███╔═╝██║░░██║██╔██╗██║███████║╚█████╗░")
+	     escreva("\n███████║██╔████╔██║███████║░░███╔═╝██║░░██║██╔██╗██║███████║╚█████╗░")
 	      u.aguarde(60)
-	     escreva("\n		██╔══██║██║╚██╔╝██║██╔══██║██╔══╝░░██║░░██║██║╚████║██╔══██║░╚═══██╗")
+	     escreva("\n██╔══██║██║╚██╔╝██║██╔══██║██╔══╝░░██║░░██║██║╚████║██╔══██║░╚═══██╗")
 	      u.aguarde(60)
-	     escreva("\n		██║░░██║██║░╚═╝░██║██║░░██║███████╗╚█████╔╝██║░╚███║██║░░██║██████╔╝")
+	     escreva("\n██║░░██║██║░╚═╝░██║██║░░██║███████╗╚█████╔╝██║░╚███║██║░░██║██████╔╝")
 	       u.aguarde(60)   
-	     escreva("\n		╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝╚═════╝░")
+	     escreva("\n╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝╚═════╝░")
      	u.aguarde(1000)
      	escreva("\n\n\n")
      } 
@@ -994,7 +994,7 @@ programa{
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 29040; 
+ * @POSICAO-CURSOR = 3747; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
