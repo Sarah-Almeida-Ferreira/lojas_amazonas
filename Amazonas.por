@@ -1,25 +1,33 @@
 programa{
 	inclua biblioteca Util --> u
-
-	const real valorGuloseimas = 4.99
+	inclua biblioteca Matematica--> mat
+	inclua biblioteca Sons
+	const inteiro numeroMaximoProdutos = 5
 	const inteiro numeroMaximoUsuarios = 10
-	const real valorCamisaTime = 40.99
+	
+	real valorGuloseimas = 4.99
+	real valorVestuario = 40.99
+	real valorEletronicos = 400.99
 	inteiro quantidadeAtualUsuarios = 0, i, opcao
-	inteiro estoqueGuloseimas[5]= {3,3,3,3,3}
-	inteiro estoqueCamisa[5]= {3,3,3,3,3}
-	inteiro estoqueEletronicos[5]= {3,3,3,3,3}
+	inteiro estoqueGuloseimas[numeroMaximoProdutos]= {3,3,3,3,3}
+	inteiro estoqueCamisa[numeroMaximoProdutos]= {3,3,3,3,3}
+	inteiro estoqueEletronicos[numeroMaximoProdutos]= {3,3,3,3,3}
 	cadeia descricaoItensGuloseimas = ".\n============================================\nChocolates pra adoçar a vida!\nContém alguma porcentagem de cacau e leite.\nNão contém regime.\n============================================\n \n"
 	cadeia semEstoqueGuloseimas[2] = {"Ops, o PAC-MAN comeu todo esse produto e não há mais disponíveis, tente uma outra guloseima!", "Ops, opção inválida, tente novamente!"}
 	cadeia vetorLogins[numeroMaximoUsuarios] = {"","","","","","","","","",""}
 	cadeia vetorSenhas[numeroMaximoUsuarios] = {"","","","","","","","","",""}
-	cadeia guloseimas[5] = {"KIT KAT","M&M'S","AMANDITA","TORTUGUITA","KINDER OVO"}
 	cadeia usuarioLogado = "", opcao_entrar, resposta
-	cadeia camisaTime[5] = {"CAMISETA DO FLAMENGO","CAMISETA DO VASCO","CAMISETA DO BOTAFOGO","CAMISETA DO FLUMINENSE","CAMISETA DO TABAJARA"}
+	cadeia eletronicos[numeroMaximoProdutos] = {"SMARTWATCH","UAIPHONE ÉPOU","SMART SPEAKER ALEXIA","SMART SPEAKER ASSISTENTE GÚGOL","SMART TV"}
+	cadeia guloseimas[numeroMaximoProdutos] = {"KIT KAT","M&M'S","AMANDITA","TORTUGUITA","KINDER OVO"}
+	cadeia vestuario[numeroMaximoProdutos] = {"CAMISETA DO FLAMENGO","CAMISETA DO VASCO","CAMISETA DO BOTAFOGO","CAMISETA DO FLUMINENSE","CAMISETA DO TABAJARA"}
 	cadeia descricaoItensVestuario = ".\n============================================\nCamisa do time do seu coração S2\nTecido 100% poliéster com tratamento DRY.\nVersão quase oficial licenciada.\n============================================\n \n"
 	cadeia semEstoqueVestuario[2] = {"Ops, tivemos um arrastão da torcida do Flamengo e não há mais camisas disponíveis, tente de outro time!", "Ops, opção inválida, seu time vai pra série B assim!"}
 	caracter opcao_menu, opcao_logoff
 	logico fim = falso	
-	
+	inteiro carrinhoGuloseimas[numeroMaximoProdutos]= {0,0,0,0,0}
+	inteiro carrinhoVestuario[numeroMaximoProdutos]= {0,0,0,0,0}
+	inteiro carrinhoEletronicos[numeroMaximoProdutos]= {0,0,0,0,0}
+	real faturaCarrinho
 //	funcao inicio(){
 //	funcao cargaInicialDeUsuarios()
 //	funcao logico loginUsuario(){
@@ -49,8 +57,9 @@ programa{
 	}
 	funcao entrar_na_loja(){
 		logo()
-		escreva("\t\t----Deseja entrar na loja?----")
-		escreva("\n\nPressione [s] para SIM e [n] para NÃO: ")
+		
+		escreva("=== DESEJA ENTRAR NA LOJA? \n")
+		escreva("=== Pressione [s] para SIM e [n] para NÃO: ")
 			leia(opcao_entrar)
 		se (opcao_entrar != "s" e opcao_entrar != "n"){
 			limpa()
@@ -71,8 +80,9 @@ programa{
 		cadeia usuario = ""
 		cadeia senha = ""
 		limpa()
-		escreva("\t\t---Login---")
-		escreva("\n\nDigite seu usuário:\n(ou pressione enter para sair)\n")
+		logo()
+		escreva("\t\t=== LOGIN ===")
+		escreva("\n\n Digite seu usuário:\n(ou pressione [ENTER] para sair)\n")
 		leia(usuario)
 		se(usuario==""){
 			fim = verdadeiro
@@ -82,6 +92,7 @@ programa{
 		leia(senha)
 		se(validarLoginUsuario(usuario, senha)){
 			limpa()
+			logo()
 			escreva("Seja bem vindo(a), ",usuario,"!\n")
 			u.aguarde(2000)
 			limpa()
@@ -102,13 +113,13 @@ programa{
 		
 	}
 	funcao listarUsuariosSigiloso(){
-		para(inteiro i=0;i<numeroMaximoUsuarios;i++){
-			escreva((i+1),"-",vetorLogins[i],"\n")
+		para(inteiro j=0;j<numeroMaximoUsuarios;j++){
+			escreva((j+1),"-",vetorLogins[j],"\n")
 		}
 	}
 	funcao listarUsuariosCompleto(){
-		para(inteiro i=0;i<numeroMaximoUsuarios;i++){
-			escreva((i+1),"-",vetorLogins[i],"/",vetorSenhas[i],"\n")
+		para(inteiro k=0;k<numeroMaximoUsuarios;k++){
+			escreva((k+1),"-",vetorLogins[k],"/",vetorSenhas[k],"\n")
 		}
 	}
 	funcao logico adicionarUsuario(cadeia nome, cadeia senha){
@@ -157,10 +168,11 @@ programa{
 		faca{
 			indice++
 			achou=(vetorLogins[indice]==nome)
-		}enquanto((nao achou)e(indice<numeroMaximoUsuarios e indice>=0))
+		}enquanto((nao achou)e(indice<numeroMaximoUsuarios e indice < 4))
 		se(achou){
 			retorne indice
 		}
+		
 		retorne numeroMaximoUsuarios
 	}
 	funcao inicio_menu_amazonas()
@@ -177,6 +189,7 @@ programa{
 	funcao menu_adm()
 	{
 		//Menu principal do sistema.
+		logo()
 		escreva("USUÁRIO: ", usuarioLogado, "\n")//Exibe o usuário que está logado no sistema.
 		escreva("+--------------------------------------------------------------+\n")
 		escreva("|\t\t\tMenu de Opções\t\t\t       |\n")
@@ -236,6 +249,7 @@ programa{
 				escolha(opcao_logoff){
 					caso '1':
 						limpa()
+						limpar_carrinho()
 						loginUsuario()
 						pare
 					caso '2':
@@ -256,6 +270,7 @@ programa{
 	{
 		limpa()
 		//Menu principal do sistema.
+		logo()
 		escreva("USUÁRIO: ", usuarioLogado, "\n")//Exibe o usuário que está logado no sistema.
 		escreva("+--------------------------------------------------------------+\n")
 		escreva("|\t\t\tMenu de Opções\t\t\t       |\n")
@@ -296,8 +311,8 @@ programa{
 				pare
 			caso '4':
 				limpa()
-				escreva("Insira a funcão 'finalizar_compra' aqui")
-				pare
+				finalizarCompra()
+				pare 
 			caso '5':
 				limpa()
 				escreva("Deseja realmente retornar à tela de Login?\n\n")
@@ -306,6 +321,7 @@ programa{
 				escolha(opcao_logoff){
 					caso '1':
 						limpa()
+						limpar_carrinho()
 						loginUsuario()
 						pare
 					caso '2':
@@ -324,6 +340,10 @@ programa{
 	}
 		funcao bicicleta_s_rodinha()
 	{
+		inteiro risadaViolenta = Sons.carregar_som("risadaViolenta.mp3")
+		Sons.definir_volume(100)
+		Sons.reproduzir_som(risadaViolenta, falso)
+     	
 		escreva("         ▄█▀▒▒▒▒▒▒▄▒▒▒▒▒▒▐█▌     \n")
 		escreva("        ▄█▒▒▒▒▒▒▒▒▀█▒▒▒▒▒▐█▌     \n")
 		escreva("       ▄█▒▒▒▒▒▒▒▒▒▒▀█▒▒▒▄██      \n")
@@ -357,6 +377,17 @@ programa{
 
 		Util.aguarde(4000)
 	}
+	funcao limpar_carrinho(){
+		limpar_vetor(carrinhoGuloseimas, numeroMaximoProdutos)
+		limpar_vetor(carrinhoVestuario,numeroMaximoProdutos)
+		limpar_vetor(carrinhoEletronicos,numeroMaximoProdutos)
+		faturaCarrinho = 0.0
+	}
+	funcao limpar_vetor(inteiro vetor[],inteiro quantidade){
+		para(inteiro y=0;y<quantidade;y++){
+			vetor[y] = 0
+		}
+	}
 	funcao logoff()
 	{
 		limpa()
@@ -379,20 +410,21 @@ programa{
 	}
 	funcao logo()
      {    limpa()
+     
      	u.aguarde(60)
-     	escreva("				░█████╗░███╗░░░███╗░█████╗░███████╗░█████╗░███╗░░██╗░█████╗░░██████╗")
+     	escreva("		░█████╗░███╗░░░███╗░█████╗░███████╗░█████╗░███╗░░██╗░█████╗░░██████╗")
 	     u.aguarde(60)
-	     escreva("\n				██╔══██╗████╗░████║██╔══██╗╚════██║██╔══██╗████╗░██║██╔══██╗██╔════╝")
+	     escreva("\n		██╔══██╗████╗░████║██╔══██╗╚════██║██╔══██╗████╗░██║██╔══██╗██╔════╝")
 	      u.aguarde(60)
-	     escreva("\n				███████║██╔████╔██║███████║░░███╔═╝██║░░██║██╔██╗██║███████║╚█████╗░")
+	     escreva("\n		███████║██╔████╔██║███████║░░███╔═╝██║░░██║██╔██╗██║███████║╚█████╗░")
 	      u.aguarde(60)
-	     escreva("\n				██╔══██║██║╚██╔╝██║██╔══██║██╔══╝░░██║░░██║██║╚████║██╔══██║░╚═══██╗")
+	     escreva("\n		██╔══██║██║╚██╔╝██║██╔══██║██╔══╝░░██║░░██║██║╚████║██╔══██║░╚═══██╗")
 	      u.aguarde(60)
-	     escreva("\n				██║░░██║██║░╚═╝░██║██║░░██║███████╗╚█████╔╝██║░╚███║██║░░██║██████╔╝")
+	     escreva("\n		██║░░██║██║░╚═╝░██║██║░░██║███████╗╚█████╔╝██║░╚███║██║░░██║██████╔╝")
 	       u.aguarde(60)   
-	     escreva("\n				╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝╚═════╝░")
+	     escreva("\n		╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝╚═════╝░")
      	u.aguarde(1000)
-     	limpa()
+     	escreva("\n\n\n")
      } 
      funcao produtosCamisaFutebol(){
 		limpa()
@@ -401,52 +433,57 @@ programa{
 		escreva("============ VISTA A CAMISA DO SEU TIME ============\n\n")		
 		para (i=0; i<=4; i++){
 			u.aguarde(1000)
-			escreva("\n", camisaTime[i], " - POR APENAS R$: ", valorCamisaTime,"\nEstoque: ", estoqueCamisa[i], descricaoItensVestuario)
+			escreva("\n", vestuario[i], " - POR APENAS R$: ", valorVestuario,"\nEstoque: ", estoqueCamisa[i], descricaoItensVestuario)
           }		
 		escreva("============ CAMISAS DE FUTEBOL ====================\n")
 		escreva("============ VISTA A CAMISA DO SEU TIME ============\n\n")
 		u.aguarde(1000)
-		escreva("Escolha a camisa do seu time dentre as opções [1], [2], [3], [4] ou [5]:\n[1]FLAMENGO ### [3]BOTAFOGO   ### [5]TABAJARA \n[2]VASCO    ### [4]FLUMINENSE ###\n============================================\n Ou escolha [6] para voltar à Página Principal ou [7] para ir para o Carrinho.\n [6]PÁGINA PRINCIPAL [7]IR PARA O CARRINHO \n============================================\n Opção: ")	 
+		escreva("Escolha a camisa do seu time dentre as opções [1], [2], [3], [4] ou [5]:\n[1]FLAMENGO\n[2]VASCO\n[3]BOTAFOGO\n[4]FLUMINENSE\n[5]TABAJARA\n[6]Menu Principal\n[7]Carrinho\n============================================\nOpção: ")	 
 		leia(opcao)
 		escolha (opcao){
 			caso (1): 
 				se (estoqueCamisa[0]>0){
-					escreva("Você optou pela ", camisaTime[0], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", vestuario[0], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueCamisa[0] = estoqueCamisa[0] - 1
+						carrinhoVestuario[0] = carrinhoVestuario[0] + 1
 					  	produtosCamisaFutebol()				 	
 					}senao{
 				      produtosCamisaFutebol()
 				     }	
 				}senao{
 					escreva(semEstoqueVestuario[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosCamisaFutebol()
 				}			
 				pare
 			caso (2):
 				se (estoqueCamisa[1]>0){
-					escreva("Você optou pela ", camisaTime[1], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", vestuario[1], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueCamisa[1] = estoqueCamisa[1] - 1
+						carrinhoVestuario[1] = carrinhoVestuario[1] + 1
 					  	produtosCamisaFutebol()					 	
 					}senao{
 				      produtosCamisaFutebol()
 				     }	
 				}senao{
 					escreva(semEstoqueVestuario[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosCamisaFutebol()
 				}
 				pare	
 			caso (3):
 				se (estoqueCamisa[2]>0){
-					escreva("Você optou pela ", camisaTime[2], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", vestuario[2], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 					 	estoqueCamisa[2] = estoqueCamisa[2] - 1
+					 	carrinhoVestuario[2] = carrinhoVestuario[2] + 1
 					  	produtosCamisaFutebol()
 					 	
 					}senao{
@@ -454,51 +491,57 @@ programa{
 				     }	
 				}senao{
 					escreva(semEstoqueVestuario[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosCamisaFutebol()
 				}
 				pare
 			caso (4):
 				se (estoqueCamisa[3]>0){
-					escreva("Você optou pela ", camisaTime[3], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", vestuario[3], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueCamisa[3] = estoqueCamisa[3] - 1
+						carrinhoVestuario[3] = carrinhoVestuario[3] + 1
 					  	produtosCamisaFutebol()				 	
 					}senao{
 				      produtosCamisaFutebol()
 				     }	
 				}senao{
 					escreva(semEstoqueVestuario[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosCamisaFutebol()
 				}
 				pare
 			caso (5):
 				se (estoqueCamisa[4]>0){
-					escreva("Você optou pela ", camisaTime[4], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", vestuario[4], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){ 
 					 	estoqueCamisa[4] = estoqueCamisa[4] - 1
+					 	carrinhoVestuario[4] = carrinhoVestuario[4] + 1
 					  	produtosCamisaFutebol()					 	
 					}senao{
 				     	produtosCamisaFutebol()
 				     }	
 				}senao{
 					escreva(semEstoqueVestuario[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosCamisaFutebol()
 				}
 				pare
 			caso (6):
-				//insira aqui função menu principal//
+				inicio_menu_amazonas()
 				pare
 			caso (7):
-				//insira aqui função IR PARA O CARRINHO//
+				
+				finalizarCompra()
 				pare			
 			caso contrario:
 				escreva(semEstoqueVestuario[1])
-				u.aguarde(1000)
+				u.aguarde(2000)
 				escreva("\n")					
 				produtosCamisaFutebol()
 		}
@@ -519,13 +562,11 @@ programa{
 	g. Dois tratamentos de erro nos produtos.
 */
 	funcao produtosAlimentos(){
-		
-		cadeia resposta
-		inteiro i
-		inteiro opcao
 		//cadeia guloseimas[5] = {"KIT KAT","M&M'S","AMANDITA","TORTUGUITA","KINDER OVO"}
 		
-			
+		
+		
+		limpa()
 		escreva("============ GULOSEIMAS & GORDICES =========================\n")
 		escreva("============ VIRE UM AVIÃO E AUMENTE SEUS PNEUS ============\n\n")		
 		para (i=0; i<=4; i++){
@@ -535,7 +576,7 @@ programa{
 		escreva("============ GULOSEIMAS & GORDICES =========================\n")
 		escreva("============ VIRE UM AVIÃO E AUMENTE SEUS PNEUS ============\n\n")
 		u.aguarde(1000)
-		escreva("Escolha a sua guloseima dentre as opções [1], [2], [3], [4] ou [5]:\n[1]KIT KAT ### [3]AMANDITA   ### [5]KINDER OVO \n[2]M&M'S    ### [4]TORTUGUITA ###\n============================================\n Ou escolha [6] para voltar à Página Principal ou [7] para ir para o Carrinho.\n [6]PÁGINA PRINCIPAL [7]IR PARA O CARRINHO \n============================================\n Opção: ")	 
+		escreva("Escolha a sua guloseima dentre as opções [1], [2], [3], [4] ou [5]:\n[1]KIT KAT\n[2]M&M'S\n[3]AMANDITA\n[4]TORTUGUITA\n[5]KINDER OVO\n[6]Menu principal\n[7]Carrinho\n============================================\n Opção: ")	 
 		leia(opcao)
 		escolha (opcao){
 			caso (1): 
@@ -544,12 +585,14 @@ programa{
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueGuloseimas[0] = estoqueGuloseimas[0] - 1
+						carrinhoGuloseimas[0] = carrinhoGuloseimas[0] + 1
 					  	produtosAlimentos()					 	
 					}senao{
 				     	produtosAlimentos()
 				     }	
 				}senao{
 					escreva(semEstoqueGuloseimas[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosAlimentos()
 				}				
@@ -560,12 +603,14 @@ programa{
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueGuloseimas[1] = estoqueGuloseimas[1] - 1
+						carrinhoGuloseimas[1] = carrinhoGuloseimas[1] + 1
 					  	produtosAlimentos()					 	
 					}senao{
 				      	produtosAlimentos()
 				     }	
 				}senao{
 					escreva(semEstoqueGuloseimas[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosAlimentos()
 				}
@@ -576,12 +621,14 @@ programa{
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueGuloseimas[2] = estoqueGuloseimas[2] - 1
+						carrinhoGuloseimas[2] = carrinhoGuloseimas[2] + 1
 					  	produtosAlimentos()					 	
 					}senao{
 				     	produtosAlimentos()
 				     }	
 				}senao{
 					escreva(semEstoqueGuloseimas[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosAlimentos()
 				}
@@ -592,12 +639,14 @@ programa{
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueGuloseimas[3] = estoqueGuloseimas[3] - 1
+						carrinhoGuloseimas[3] = carrinhoGuloseimas[3] + 1
 					  	produtosAlimentos()					 	
 					}senao{
 				      produtosAlimentos()
 				     }	
 				}senao{
 					escreva(semEstoqueGuloseimas[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosAlimentos()
 				}
@@ -608,26 +657,29 @@ programa{
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueGuloseimas[4] = estoqueGuloseimas[4] - 1
+						carrinhoGuloseimas[4] = carrinhoGuloseimas[4] + 1
 					  	produtosAlimentos()				 	
 					}senao{
 				      	produtosAlimentos()
 				     }	
 				}senao{
 					escreva(semEstoqueGuloseimas[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosAlimentos()
 				}
 				pare
 			caso (6):
-				//insira aqui função ir para o menu principal//
+				inicio_menu_amazonas()
 				pare
 			caso (7):
-				//insira aqui função IR PARA O CARRINHO//
+				finalizarCompra()
 				pare			
 			caso contrario:
 				escreva(semEstoqueGuloseimas[1])
-				u.aguarde(1000)
+				u.aguarde(4000)
 				escreva("\n")
+				logo()
 				produtosAlimentos()
 		}
 	}
@@ -650,119 +702,211 @@ programa{
 	g. Dois tratamentos de erro nos produtos.
 */
 	funcao produtosEletronicos (){
-		cadeia resposta
-		inteiro i
-		inteiro opcao
-		cadeia smartEletronicos[5] = {"SMARTWATCH","UAIPHONE ÉPOU","SMART SPEAKER ALEXIA","SMART SPEAKER ASSISTENTE GÚGOL","SMART TV"}
+		
+		
 		cadeia descricaoItensEletronicos = ".\n============================================\nProdutos que facilitarão sua vida em alta tecnologia!\n100% mais SMARTS que você!!.\nVersão brasileira Herbert Richards.\n============================================\n \n"
 		cadeia semEstoqueEletronicos[2] = {"A revolução das máquinas começou e o seu produto está indisponível, arrisque outro Smart produto!", "Ops, falha na Matrix, tente novamente!"}
-		const real valorEletronicos = 400.99
 		
+		limpa()
 		escreva("============ SMART TECHNOLOGIES =============\n")
 		escreva("============ SUA VIDA MAIS SMART ============\n\n")		
 		para (i=0; i<=4; i++){
 			u.aguarde(1000)
-			escreva("\n", smartEletronicos[i], " - POR APENAS R$: ", valorEletronicos,"\nEstoque: ", estoqueEletronicos[i], descricaoItensEletronicos)
+			escreva("\n", eletronicos[i], " - POR APENAS R$: ", valorEletronicos,"\nEstoque: ", estoqueEletronicos[i], descricaoItensEletronicos)
           }		
 		escreva("============ SMART TECHNOLOGIES =============\n")
 		escreva("============ SUA VIDA MAIS SMART ============\n\n")
 		u.aguarde(1000)
-		escreva("Escolha o seu gadget dentre as opções [1], [2], [3], [4] ou [5]:\n[1]SMARTWATCH       ### [3]SMART SPEAKER ALEXIA           ### [5]SMART TV \n[2]UAIPHONE ÉPOU    ### [4]SMART SPEAKER ASSISTENTE GÚGOL ###\n============================================\n Ou escolha [6] para voltar à Página Principal ou [7] para ir para o Carrinho.\n [6]PÁGINA PRINCIPAL [7]IR PARA O CARRINHO \n============================================\n Opção: ")	 
+		escreva("Escolha o seu gadget dentre as opções [1], [2], [3], [4] ou [5]:\n[1]SMARTWATCH\n[2]UAIPHONE ÉPOU\n[3]SMART SPEAKER ALEXIA\n[4]SMART SPEAKER ASSISTENTE GÚGOL\n[5]SMART TV\n[6]Menu principal\n[7]Carrinho\n============================================\nOpção: ")	 
 		leia(opcao)
 		escolha (opcao){
 			caso (1): 
 				se (estoqueEletronicos[0]>0){
-					escreva("Você optou pela ", smartEletronicos[0], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", eletronicos[0], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueEletronicos[0] = estoqueEletronicos[0] - 1
+						carrinhoEletronicos[0] = carrinhoEletronicos[0] + 1
 					  	produtosEletronicos()					 	
 					}senao{
 				     	produtosEletronicos()
 				     }	
 				}senao{
 					escreva(semEstoqueEletronicos[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosEletronicos()
 				}				
 				pare	
 			caso (2):
 				se (estoqueEletronicos[1]>0){
-					escreva("Você optou pela ", smartEletronicos[1], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", eletronicos[1], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueEletronicos[1] = estoqueEletronicos[1] - 1
+						carrinhoEletronicos[1] = carrinhoEletronicos[1] + 1
 					  	produtosEletronicos()					 	
 					}senao{
 				     	produtosEletronicos()
 				     }	
 				}senao{
 					escreva(semEstoqueEletronicos[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosEletronicos()
 				}
 				pare				
 			caso (3):
 				se (estoqueEletronicos[2]>0){
-					escreva("Você optou pela ", smartEletronicos[2], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", eletronicos[2], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueEletronicos[2] = estoqueEletronicos[2] - 1
+						carrinhoEletronicos[2] = carrinhoEletronicos[2] + 1
 					  	produtosEletronicos()					 	
 					}senao{
 				     	produtosEletronicos()
 				     }	
 				}senao{
 					escreva(semEstoqueEletronicos[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosEletronicos()
 				}
 				pare	
 			caso (4):
 				se (estoqueEletronicos[3]>0){
-				escreva("Você optou pela ", smartEletronicos[3], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+				escreva("Você optou pela ", eletronicos[3], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 				leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueEletronicos[3] = estoqueEletronicos[3] - 1
+						carrinhoEletronicos[3] = carrinhoEletronicos[3] + 1
 					  	produtosEletronicos()					 	
 					}senao{
 				      produtosEletronicos()
 				     }	
 				}senao{
 					escreva(semEstoqueEletronicos[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosEletronicos()
 				}
 				pare
 			caso (5):
 				se (estoqueEletronicos[4]>0){
-					escreva("Você optou pela ", smartEletronicos[4], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
+					escreva("Você optou pela ", eletronicos[4], " gostaria de adicionar ao carrinho?\n Digite [S] para SIM ou [N] para não: ")
 					leia(resposta)
 					se (resposta == "S" ou resposta == "s"){
 						estoqueEletronicos[4] = estoqueEletronicos[4] - 1
+						carrinhoEletronicos[4] = carrinhoEletronicos[4] + 1
 					  	produtosEletronicos()					 	
 					}senao{
 				     	produtosEletronicos()
 				     }	
 				}senao{
 					escreva(semEstoqueEletronicos[0])
+					u.aguarde(4000)
 					escreva("\n")
 					produtosEletronicos()
 				}
 				pare
 			caso (6):
-				//insira aqui função menu principal//
+				inicio_menu_amazonas()
 				pare
 			caso (7):
-				//insira aqui função IR PARA O CARRINHO//
+				finalizarCompra()
 				pare
 			caso contrario:
 				escreva(semEstoqueEletronicos[1])
-				u.aguarde(1000)
+				u.aguarde(2000)
 				escreva("\n")
 				produtosEletronicos()
 		}
 	}
+	funcao imprimirCarrinho(){
+		limpa()
+		logo()
+		faturaCarrinho = 0.0
+		inteiro x = 0
+		real faturaParcialGuloseimas = 0.0
+		real faturaParcialVestuario = 0.0
+		real faturaParcialEletronicos = 0.0
+		escreva("\nGuloseimas:\n")
+		para(i = 0;i<5;i++){
+			se(carrinhoGuloseimas[i] > 0){
+				escreva(guloseimas[i]," : ",carrinhoGuloseimas[i]," = R$",valorGuloseimas," Unidade\n")
+				faturaParcialGuloseimas += carrinhoGuloseimas[i] * valorGuloseimas
+			}
+		}
+		se(faturaParcialGuloseimas > 0){
+			escreva("Subtotal de guloseimas: ",mat.arredondar(faturaParcialGuloseimas, 2)) 
+			faturaCarrinho = faturaCarrinho + faturaParcialGuloseimas 
+		}senao{
+			escreva("Nenhuma guloseimas\n")
+		}
+		
+		//Quebra de linha
+		
+		escreva("\nVestuário:\n")
+		para(i = 0;i<5;i++){
+			se(carrinhoVestuario[i] > 0){
+				escreva(vestuario[i]," : ",carrinhoVestuario[i]," = R$",valorVestuario," Unidade\n")
+				faturaParcialVestuario += carrinhoVestuario[i] * valorVestuario
+			}
+		}
+		se(faturaParcialVestuario > 0){
+			escreva("Subtotal de vestuário: ",mat.arredondar(faturaParcialVestuario, 2)) 
+			faturaCarrinho = faturaCarrinho + faturaParcialVestuario 
+		}senao{
+			escreva("Nenhum Vestuário\n")
+		}
+		//Quebra de linha
+		
+		escreva("\nEletrônicos:\n")
+		para(i = 0;i<5;i++){
+			se(carrinhoEletronicos[i] > 0){
+				escreva(eletronicos[i]," : ",carrinhoEletronicos[i]," = R$",valorEletronicos," Unidade\n")
+				faturaParcialEletronicos += carrinhoEletronicos[i] * valorEletronicos
+			}
+		}
+		se(faturaParcialEletronicos > 0){
+			escreva("Subtotal de eletrônicos: ",mat.arredondar(faturaParcialEletronicos, 2)) 
+			faturaCarrinho = faturaCarrinho + faturaParcialEletronicos
+		}senao{
+			escreva("Nenhum Eletrônico\n")
+		}
+		se(faturaCarrinho>0){
+			escreva("\nValor Total: R$",mat.arredondar(faturaCarrinho, 2))
+		}senao{
+			escreva("Carrinho vazio")
+		}
+		
+	}	
+	funcao finalizarCompra(){
+		imprimirCarrinho()
+		escreva("\n\n[1]Finalizar a compra\n[2]Continuar comprando\n")
+		inteiro escolhaCliente
+		leia(escolhaCliente)
+		se(escolhaCliente == 1){
+			se(faturaCarrinho>0){
+				escreva("Compra aprovada com sucesso!")
+			}
+			inteiro compraRealizada = Sons.carregar_som("compraRealizada.mp3")
+			Sons.reproduzir_som(compraRealizada, falso)
+			escreva("\n======================\n OBRIGADO POR VISITAR NOSSA LOJA!!")
+			
+		}senao se(escolhaCliente == 2){
+			escreva("Voltando a tela de compras...")
+			u.aguarde(3000)
+			menu()
+			
+		}senao{
+			escreva("Opção inválida. Voltando a tela de compras...")
+			u.aguarde(3000)
+			menu()		
+		}
+	}
+	
 //---------------------------------------------------------------------------------------------
 // FIM Codigo Patrick - produtoEletronicos
 //-------------------------------------------
@@ -773,7 +917,7 @@ programa{
 	funcao admin_guloseimas(){
 */
 	funcao admin_guloseimas(){
-		caracter opcao
+		
 		cadeia troca, novoproduto
 		inteiro contador,parar = 0
 		escreva("\nO que você deseja?\n1 - Alterar os produtos\n2 - Adicionar produtos\n3 - Excluir produtos\n4 - Voltar ao menu inicial")
@@ -850,7 +994,7 @@ programa{
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3602; 
+ * @POSICAO-CURSOR = 29040; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
