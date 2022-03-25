@@ -7,8 +7,8 @@
 <p><a href="https://github.com/Chevrand">Wanderson Chevrand</a></p>
 <p><a href="https://github.com/Andre-Lucas-093">André Lucas</a></p>
 <p><a href="https://github.com/Patrick-Jabba">Patrick</a></p>
-<p><a href="https://github.com/Patrick-Jabba">Aline Torres</a></p>
-<p><a href="https://github.com/Patrick-Jabba">Pereira</a></p>
+<p><a href="https://github.com/alinetorrespachecotil">Aline Torres</a></p>
+<p><a href="https://github.com/cgpereira">Pereira</a></p>
 <p></p>
 
 <p><h3>Login</p></h3>
